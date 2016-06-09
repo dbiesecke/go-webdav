@@ -1,5 +1,8 @@
 # webdav
 
+* Some simple changes to support openshift env vars
+
+
 __TODO (litmus tests):__
 * basic..... pass
 * copymove.. pass
