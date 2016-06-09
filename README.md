@@ -1,6 +1,9 @@
 # webdav
 
 * Some simple changes to support openshift env vars
+ˋˋˋshell
+$ rhc create-app mygo https://cartreflect-claytondev.rhcloud.com/reflect?github=smarterclayton/openshift-go-cart
+ˋˋˋ
 
 
 __TODO (litmus tests):__
