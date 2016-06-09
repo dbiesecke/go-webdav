@@ -10,11 +10,13 @@ import (
 )
 
 var (
-	path = "./tmp"
+	path = os.Getenv("OPENSHIFT_DATA_DIR")
 )
 
 func main() {
 	os.Mkdir(path, os.ModeDir)
+	
+	bind := fmt.Sprintf("%s:%s", os.Getenv("OPENSHIFT_GO_IP"), os.Getenv("OPENSHIFT_GO_PORT"))
 
 	// http.StripPrefix is not working, webdav.Server has no knowledge
 	// of stripped component, but needs for COPY/MOVE methods.
@@ -28,7 +30,7 @@ func main() {
 	http.HandleFunc("/", index)
 
 	log.Println("Listening on http://127.0.0.1:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(bind, nil))
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
